@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Sanctum\HasApiTokens;
@@ -98,4 +99,21 @@ class AuthController extends Controller
             "input_data"    => $user
         ], 201);
     }
+
+     // Cek user saat ini
+     public function me()
+     {
+         $user = Auth::user();
+ 
+         if ($user) {
+             return response()->json([
+                 "message" => "Authenticated",
+                 "user"    => $user
+             ], 200);
+         } else {
+             return response()->json([
+                 "message" => "User belum login"
+             ], 200);
+         }
+     }
 }
