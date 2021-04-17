@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\KontrakController;
+use App\Http\Controllers\FisikKontroller;
+use App\Http\Controllers\PengawasanController;
+use App\Http\Controllers\PerencanaanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,20 +21,49 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::group(["middleware" => "auth:sanctum"], function () {
-  // Insert Kontrak
-  Route::post("kontrak", [KontrakController::class, "insert"]);
-  // Edit Kontrak
-  Route::put("kontrak/{id_kontrak}", [KontrakController::class, "edit"]);
-  // Get All Kontrak
-  Route::get("kontrak", [KontrakController::class, "getAll"]);
-  // Get Kontrak By ID
-  Route::get("kontrak/{id_kontrak}", [KontrakController::class, "getById"]);
-  // Delete Kontrak By ID
-  Route::delete("kontrak/{id_kontrak}", [KontrakController::class, "deleteKontrak"]);
+  // Fisik
+  // Insert Fisik
+  Route::post("fisik", [FisikKontroller::class, "insert"]);
+  // Edit Fisik
+  Route::put("fisik/{id_fisik}", [FisikKontroller::class, "edit"]);
+  // Get All Fisik
+  Route::get("fisik", [FisikKontroller::class, "getAll"]);
+  // Get Fisik By ID
+  Route::get("fisik/{id_fisik}", [FisikKontroller::class, "getById"]);
+  // Delete Fisik By ID
+  Route::delete("fisik/{id_fisik}", [FisikKontroller::class, "deleteFisik"]);
+
+  // Pengawasan
+  // Insert Pengawasan
+  Route::post("pengawasan", [PengawasanController::class, "insert"]);
+  // Edit Pengawasan
+  Route::put("pengawasan/{id_pengawasan}", [PengawasanController::class, "edit"]);
+  // Get All Pengawasan
+  Route::get("pengawasan", [PengawasanController::class, "getAll"]);
+  // Get Pengawasan By ID
+  Route::get("pengawasan/{id_pengawasan}", [PengawasanController::class, "getById"]);
+  // Delete Pengawasan By ID
+  Route::delete("pengawasan/{id_pengawasan}", [PengawasanController::class, "deletePengawasan"]);
+
+  // Perencanaan
+  // Insert Perencanaan
+  Route::post("perencanaan", [PerencanaanController::class, "insert"]);
+  // Edit Perencanaan
+  Route::put("perencanaan/{id_perencanaan}", [PerencanaanController::class, "edit"]);
+  // Get All Perencanaan
+  Route::get("perencanaan", [PerencanaanController::class, "getAll"]);
+  // Get Perencanaan By ID
+  Route::get("perencanaan/{id_perencanaan}", [PerencanaanController::class, "getById"]);
+  // Delete Perencanaan By ID
+  Route::delete("perencanaan/{id_perencanaan}", [PerencanaanController::class, "deletePerencanaan"]);
 });
 
-// Print Laporan Kontrak
-Route::get('cetak-kontrak', [KontrakController::class, "printKontrak"]);
+// Print Laporan Fisik
+Route::get('cetak-fisik', [FisikKontroller::class, "printFisik"]);
+// Print Laporan Pengawasan
+Route::get('cetak-pengawasan', [PengawasanController::class, "printPengawasan"]);
+// Print Laporan Perencanaan
+Route::get('cetak-perencanaan', [PerencanaanController::class, "printPerencanaan"]);
 
 // Login
 Route::post('login', [AuthController::class, "login"]);
