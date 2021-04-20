@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\FisikKontroller;
+use App\Http\Controllers\FisikController;
 use App\Http\Controllers\PengawasanController;
 use App\Http\Controllers\PerencanaanController;
 use Illuminate\Support\Facades\Route;
@@ -23,15 +23,15 @@ use Illuminate\Support\Facades\Route;
 Route::group(["middleware" => "auth:sanctum"], function () {
   // Fisik
   // Insert Fisik
-  Route::post("fisik", [FisikKontroller::class, "insert"]);
+  Route::post("fisik", [FisikController::class, "insert"]);
   // Edit Fisik
-  Route::put("fisik/{id_fisik}", [FisikKontroller::class, "edit"]);
+  Route::put("fisik/{id_fisik}", [FisikController::class, "edit"]);
   // Get All Fisik
-  Route::get("fisik", [FisikKontroller::class, "getAll"]);
+  Route::get("fisik", [FisikController::class, "getAll"]);
   // Get Fisik By ID
-  Route::get("fisik/{id_fisik}", [FisikKontroller::class, "getById"]);
+  Route::get("fisik/{id_fisik}", [FisikController::class, "getById"]);
   // Delete Fisik By ID
-  Route::delete("fisik/{id_fisik}", [FisikKontroller::class, "deleteFisik"]);
+  Route::delete("fisik/{id_fisik}", [FisikController::class, "deleteFisik"]);
 
   // Pengawasan
   // Insert Pengawasan
@@ -59,7 +59,7 @@ Route::group(["middleware" => "auth:sanctum"], function () {
 });
 
 // Print Laporan Fisik
-Route::get('cetak-fisik', [FisikKontroller::class, "printFisik"]);
+Route::get('cetak-fisik', [FisikController::class, "printFisik"]);
 // Print Laporan Pengawasan
 Route::get('cetak-pengawasan', [PengawasanController::class, "printPengawasan"]);
 // Print Laporan Perencanaan
