@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Fisik;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class FisikKontroller extends Controller
@@ -161,6 +162,7 @@ class FisikKontroller extends Controller
     // Print Fisik
     public function printFisik(Request $request)
     {
+        
         /**
          * Display a listing of the resource.
          *
